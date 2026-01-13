@@ -1,5 +1,7 @@
 # llm-cost-observability
 
+![CI](https://github.com/TryKosm/llm-cost-observability/actions/workflows/ci.yml/badge.svg)
+
 Token cost and latency observability utilities for LLM workloads.
 
 [![CI](https://github.com/TryKosm/llm-cost-observability/actions/workflows/ci.yml/badge.svg)](https://github.com/TryKosm/llm-cost-observability/actions/workflows/ci.yml)
