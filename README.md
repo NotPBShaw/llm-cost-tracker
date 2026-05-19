@@ -2,40 +2,47 @@
 
 Token cost and latency observability for LLM workloads.
 
-![CI](https://github.com/TryKosm/llm-cost-tracker/actions/workflows/ci.yml/badge.svg)
-
-Token cost and latency observability utilities for LLM workloads.
-
-[![CI](https://github.com/TryKosm/llm-cost-tracker/actions/workflows/ci.yml/badge.svg)](https://github.com/TryKosm/llm-cost-tracker/actions/workflows/ci.yml)
+[![CI](https://github.com/NotPBShaw/llm-cost-tracker/actions/workflows/ci.yml/badge.svg)](https://github.com/NotPBShaw/llm-cost-tracker/actions/workflows/ci.yml)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
+
+Estimate USD spend from token usage records and aggregate costs across model calls.
 
 ## Why this exists
 
-Open-source building block for production AI workflows.
+LLM bills surprise teams when token usage is invisible. This library provides deterministic cost estimation from usage records.
 
 ## Quickstart
 
-
-tbd
+```bash
+npm install
+make check
+node --test tests/cost.test.ts
+```
 
 ## Usage
 
-Add a concise runnable example for the main workflow in this repository.
+```typescript
+import { estimateCostUSD } from "./src/cost.js";
+
+const cost = estimateCostUSD(
+  { model: "gpt-4o-mini", promptTokens: 1200, completionTokens: 400, latencyMs: 890 },
+  0.002,
+);
+console.log(cost);
+```
 
 ## Architecture
 
-Document the core components and data flow for this project.
-
-## Roadmap
-
-- [ ] Stabilize v0.1 contract and improve docs
-- [ ] Expand test coverage and CI signals
-- [ ] Add one benchmark or reliability metric
+- `cost.ts` — per-record USD estimation
+- `aggregate.ts` — roll-up helpers for batch usage
+- `types.ts` — shared usage record types
 
 ## Development
 
-- Run tests locally before opening a PR.
-- Keep changes scoped and update docs for API/behavior changes.
+```bash
+make check
+node --test tests/cost.test.ts
+```
 
 ## License
 
